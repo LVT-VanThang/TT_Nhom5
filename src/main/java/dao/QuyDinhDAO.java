@@ -47,4 +47,39 @@ public class QuyDinhDAO {
 	        em.close(); 
 	    }
 	}
+	public boolean capNhatQuyDinh(QuyDinh qd) {
+	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
+	    try {
+	        em.getTransaction().begin();
+	        em.merge(qd);
+	        em.getTransaction().commit();
+	        return true;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        em.getTransaction().rollback();
+	        return false;
+	    } finally {
+	        em.close();
+	    }
+	}
+	public boolean xoaQuyDinh(String maQuyDinh) {
+	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
+	    try {
+	        em.getTransaction().begin();
+	        QuyDinh qd = em.find(QuyDinh.class, maQuyDinh);
+	        if (qd != null) {
+	            em.remove(qd);
+	            em.getTransaction().commit();
+	            return true;
+	        } else {
+	            return false; 
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        em.getTransaction().rollback();
+	        return false;
+	    } finally {
+	        em.close();
+	    }
+	}
 }   

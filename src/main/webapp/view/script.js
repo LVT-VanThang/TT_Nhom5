@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- PHẦN 1: XỬ LÝ MODAL THỦ THƯ ---
     var modalThuThu = document.getElementById("modalThem");
     var btnThemThuThu = document.getElementById("btnThem");
-    // Tìm nút close nằm bên trong modal thủ thư để tránh nhầm lẫn
     var closeThuThu = modalThuThu ? modalThuThu.querySelector(".close") : null;
 
     if (btnThemThuThu && modalThuThu) {
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (closeQuyDinh && modalQuyDinh) {
         closeQuyDinh.onclick = function() {
             modalQuyDinh.style.display = "none";
-            // Logic riêng của Quy Định: Xóa param URL khi đóng để tránh hiện lại form edit
             if (window.location.search.includes("action=edit")) {
                modalQuyDinh.style.display = "none";
             }

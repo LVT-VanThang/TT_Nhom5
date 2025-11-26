@@ -46,7 +46,7 @@
             <th>Giá trị</th>
             <th>Đơn vị</th>
             <th>Ngày cập nhật</th>
-            <th>Người sửa</th>
+            <th>Người thực hiện</th>
             <th>Hành động</th>
           </tr>
         </thead>
@@ -131,8 +131,8 @@
                      required placeholder="VD: Đồng, Ngày, Quyển...">
           </div>
           
-          <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
-              <i>* Ngày cập nhật và Người sửa sẽ được hệ thống tự động lưu.</i>
+          <div style="grid-column: span 2; margin-top: 15px; font-size: 0.9em; color: #666; width=100%;">
+              <i>* Ngày cập nhật và Người thêm sẽ được hệ thống tự động lưu.</i>
           </div>
 
           <button type="submit" class="btn-save" style="margin-top: 20px;">
