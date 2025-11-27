@@ -34,11 +34,12 @@ public class ThuThu extends HttpServlet {
 		ThuThuDAO ttdao = new ThuThuDAO();
 		List<model.ThuThu> dstt = null; 
         String action = request.getParameter("action");
+        String id = request.getParameter("id");
         if (action != null && action.equals("new")) {
 			request.setAttribute("moFormThem", true);
 		}
         if (action != null && action.equals("delete")) {
-			String id = request.getParameter("id");
+			
 			boolean xoaThanhCong = ttdao.xoaThuThu(id);
 			if (xoaThanhCong) {
 				response.sendRedirect(request.getContextPath() + "/ThuThu");
@@ -47,11 +48,14 @@ public class ThuThu extends HttpServlet {
 				request.setAttribute("baoLoi", "Không thể xóa! Thủ thư '" + id + "' đã lập phiếu mượn hoặc có dữ liệu liên quan.");
 			}
 		}
-		if (action != null && action.equals("edit")) {
-			String id = request.getParameter("id");
-			model.ThuThu ttCanSua = ttdao.timKiemThuThu(id);
-			request.setAttribute("suaThuThu", ttCanSua);
-		}
+        if (action != null && action.equals("edit")) {
+            model.ThuThu ttCanSua = ttdao.timKiemThuThu(id);
+            
+            if (ttCanSua != null) {
+                request.setAttribute("suaThuThu", ttCanSua);    
+                request.setAttribute("moFormThem", true); 
+            }
+        }
 		String tuKhoa = request.getParameter("tuKhoa");
 		if (tuKhoa != null && !tuKhoa.trim().isEmpty()) {
 			String tuKhoaChuan = tuKhoa.trim();

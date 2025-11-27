@@ -35,6 +35,10 @@ public class QuyDinh extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		QuyDinhDAO qddao = new QuyDinhDAO();
+		model.QuyDinh qdNgay = qddao.timKiemQuyDinh("QD001"); 
+		model.QuyDinh qdPhat = qddao.timKiemQuyDinh("QD002");
+		request.setAttribute("qdNgay", qdNgay);
+		request.setAttribute("qdPhat", qdPhat);
 		String action = request.getParameter("action");
 	    String maQuyDinh = request.getParameter("id"); 
 	    if (action != null && action.equals("delete") && maQuyDinh != null) {

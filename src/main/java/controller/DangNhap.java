@@ -53,7 +53,7 @@ public class DangNhap extends HttpServlet {
 		if(taiKhoanAdmin != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin_account", taiKhoanAdmin);
-			response.sendRedirect(request.getContextPath() + "/view/trangchuadmin.jsp"); 
+			response.sendRedirect(request.getContextPath() + "/TrangChuQuanTriVien"); 
 			
 		} else {
 			model.ThuThu taiKhoanThuThu = daothuthu.kiemTraDangNhap(tenDangNhap, matKhau);
