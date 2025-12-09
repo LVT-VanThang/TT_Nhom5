@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.LoaiDocGiaDAO;
+
 import dao.NhaXuatBanDAO;
 import dao.TheLoaiDAO;
 import dao.ThuThuDAO;
@@ -32,7 +33,7 @@ public class TrangChuQuanTriVien extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		if (session.getAttribute("admin_account") == null) {
 			response.sendRedirect(request.getContextPath() + "/view/dangnhap.jsp");
@@ -41,11 +42,9 @@ request.setCharacterEncoding("UTF-8");
         TheLoaiDAO tldao= new TheLoaiDAO();
         NhaXuatBanDAO nxbdao=new NhaXuatBanDAO();
         ThuThuDAO ttdao=new ThuThuDAO();
-        LoaiDocGiaDAO ldgdao=new LoaiDocGiaDAO();
 		int slTheLoai = tldao.layDanhSachTheLoai().size();
 		int slNXB = nxbdao.layDanhSachNhaXuatBan().size();
 		int slThuThu = ttdao.layDanhSachThuThu().size(); 
-		int slLoaiDocGia =ldgdao.layDanhSachLoaiDocGia().size(); 
 		dao.QuyDinhDAO qdDao = new dao.QuyDinhDAO();
 	    model.QuyDinh qdNgay = qdDao.timKiemQuyDinh("QD001"); 
 	    model.QuyDinh qdPhat = qdDao.timKiemQuyDinh("QD002");
@@ -55,7 +54,6 @@ request.setCharacterEncoding("UTF-8");
 		request.setAttribute("slTheLoai", slTheLoai);
 		request.setAttribute("slNXB", slNXB);
 		request.setAttribute("slThuThu", slThuThu);
-		request.setAttribute("slLoaiDocGia", slLoaiDocGia);
 		request.getRequestDispatcher("/view/trangchuadmin.jsp").forward(request, response);
 	}
 

@@ -27,7 +27,6 @@
 				<li><a href="${pageContext.request.contextPath}/QuyDinh"class="active">⚙️ Cấu Hình Quy Định</a></li>
 				<li><a href="${pageContext.request.contextPath}/TheLoai">📂 Quản Lý Thể loại</a></li>
 				<li><a href="${pageContext.request.contextPath}/NhaXuatBan">🏢 Nhà xuất bản</a></li>
-				<li><a href="${pageContext.request.contextPath}/LoaiDocGia">🧑‍🏫 Loại Độc Giả</a></li>
                 <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
 			</ul>
 		</aside>
@@ -144,7 +143,7 @@
 				</div>
 
 				<div class="form-group">
-					<label>Mật khẩu (*):</label> <input type="text" name="matKhau"
+					<label>Mật khẩu (*):</label> <input type="password" name="matKhau"
 						value="${not empty suaThuThu ? suaThuThu.matKhau : ''}" required>
 				</div>
 

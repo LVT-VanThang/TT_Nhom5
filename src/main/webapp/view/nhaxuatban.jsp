@@ -26,7 +26,6 @@
 				<li><a href="${pageContext.request.contextPath}/QuyDinh"class="active">⚙️ Cấu Hình Quy Định</a></li>
 				<li><a href="${pageContext.request.contextPath}/TheLoai">📂 Quản Lý Thể loại</a></li>
 				<li><a href="${pageContext.request.contextPath}/NhaXuatBan">🏢 Nhà xuất bản</a></li>
-				<li><a href="${pageContext.request.contextPath}/LoaiDocGia">🧑‍🏫 Loại Độc Giả</a></li>
                 <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
 			</ul>
 		</aside>
@@ -47,7 +46,7 @@
 							tìm</a>
 					</c:if>
 				</form>
-				<button id="btnThemMoi" class="btn-add">➕ Thêm mới</button>
+				<button id="btnThem" class="btn-add">➕ Thêm mới</button>
 			</div>
 
 			<table class="data-table">
@@ -84,7 +83,7 @@
 			</table>
 		</main>
 	</div>
-	<div id="modalThemNhaXuatBan" class="modal">
+	<div id="modalThem" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 

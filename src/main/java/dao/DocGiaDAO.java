@@ -100,4 +100,40 @@ public class DocGiaDAO {
 	        em.close();
 	    }
 	}
+	public boolean kiemTraEmail(String email, String maDocGiaNgoaiTru) {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            if (maDocGiaNgoaiTru == null) 
+            	maDocGiaNgoaiTru = "";
+            String jpql = "SELECT COUNT(d) FROM DocGia d WHERE d.email = :email AND d.maDocGia != :maDocGiaNgoaiTru";
+            
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+            query.setParameter("email", email);
+            query.setParameter("maDocGiaNgoaiTru", maDocGiaNgoaiTru);
+            
+            Long count = query.getSingleResult();
+            return count > 0; 
+        } finally {
+            em.close();
+        }
+    }
+    public boolean kiemTraSDT(String sdt, String maDocGiaNgoaiTru) {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            if (maDocGiaNgoaiTru == null)
+            	maDocGiaNgoaiTru = "";
+
+            String jpql = "SELECT COUNT(d) FROM DocGia d WHERE d.soDienThoai = :sdt AND d.maDocGia != :maDocGiaNgoaiTru";
+            
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+            query.setParameter("sdt", sdt);
+            query.setParameter("maDocGiaNgoaiTru", maDocGiaNgoaiTru);
+            
+            Long count = query.getSingleResult();
+            return count > 0;
+        } finally {
+            em.close();
+        }
+    }
+	
 }

@@ -8,7 +8,6 @@
 		<class>model.ChiTietPhieuMuon</class>
 		<class>model.ChiTietPhieuMuonPK</class>
 		<class>model.DocGia</class>
-		<class>model.LoaiDocGia</class>
 		<class>model.NhaXuatBan</class>
 		<class>model.PhieuMuon</class>
 		<class>model.QuanTriVien</class>

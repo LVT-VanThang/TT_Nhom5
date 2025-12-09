@@ -21,9 +21,9 @@
 			<h2>📘 Thư viện ABC</h2>
 			<ul>
 				<li><a href="#">🏠 Trang chủ</a></li>
-				<li><a href="#">📚 Quản lý Sách</a></li>
-				<li><a href="#">✍️ Quản lý Tác giả</a></li>
-				<li><a href="#">🧑‍💼 Quản lý Độc giả</a></li>
+				<li><a href="${pageContext.request.contextPath}/Sach">📚 Quản lý Sách</a></li>
+				<li><a href="${pageContext.request.contextPath}/TacGia">✍️ Quản lý Tác giả</a></li>
+				<li><a href="${pageContext.request.contextPath}/DocGia">🧑‍💼 Quản lý Độc giả</a></li>
 				<li><a href="#">🔄 Quản lý Mượn/Trả</a></li>
 				<li><a href="#">🔍 Tra cứu</a></li>
 				<li><a href="#">📊 Thống kê</a></li>

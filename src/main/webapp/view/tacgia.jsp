@@ -15,13 +15,13 @@
       <h2>📘 Thủ thư</h2>
       <ul>
         <li><a href="#">🏠 Trang chủ</a></li>
-        <li><a href="${pageContext.request.contextPath}/Sach">📚 Sách</a></li>
-        <li><a href="${pageContext.request.contextPath}/TacGia">✍️ Tác giả</a></li>
-        <li><a href="#">🧑‍💼 Độc giả</a></li>
-        <li><a href="#">🔄 Mượn/Trả</a></li>
-        <li><a href="#">🔍 Tra cứu</a></li>
-        <li><a href="#">📊 Thống kê</a></li>
-        <li><a href="#">🚪 Đăng xuất</a></li>
+        <li><a href="${pageContext.request.contextPath}/Sach">📚Quản Lý Sách</a></li>
+        <li><a href="${pageContext.request.contextPath}/TacGia">✍️Quản Lý Tác giả</a></li>
+        <li><a href="${pageContext.request.contextPath}/DocGia" class="active">🧑‍💼Quản Lý Độc giả</a></li>
+        <li><a href="${pageContext.request.contextPath}/MuonTra">🔄Quản Lý Mượn/Trả</a></li>
+        <li><a href="${pageContext.request.contextPath}/TraCuu">🔍 Tra cứu</a></li>
+        <li><a href="${pageContext.request.contextPath}/ThongKe">📊 Thống kê</a></li>
+        <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
       </ul>
     </aside>
 

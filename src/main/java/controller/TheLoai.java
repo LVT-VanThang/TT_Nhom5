@@ -75,18 +75,21 @@ public class TheLoai extends HttpServlet {
 	    	try {
 				String maTheLoai=request.getParameter("maTheLoai");
 				String tenTheLoai=request.getParameter("tenTheLoai");
+				String viTriKe=request.getParameter("viTriKe");
 				model.TheLoai tl=new model.TheLoai();
 				if(maTheLoai == null || maTheLoai.trim().isEmpty()) {
 	                throw new Exception("Mã quy định không được để trống!");
 	            }
                 tl.setMaTheLoai(maTheLoai.trim());
                 tl.setTenTheLoai(tenTheLoai.trim());
+                tl.setViTriKe(viTriKe.trim());
                 boolean ketQua = false;
 	            if (action.equals("insert")) {
 	                if (tldao.timKiemTheLoai(maTheLoai) != null) {
 	                    request.setAttribute("baoLoi", "Lỗi: Mã thể loại '" + maTheLoai + "' đã tồn tại!");
 	                    request.setAttribute("maTheLoai", maTheLoai); 
 	                    request.setAttribute("tenTheLoai", tenTheLoai);
+	                    request.setAttribute("viTriKe", viTriKe);
 	                    
 	                    request.setAttribute("moFormThem", true); 
 	                    doGet(request, response);
@@ -97,6 +100,7 @@ public class TheLoai extends HttpServlet {
 	                           request.setAttribute("baoLoi", "Lỗi: Tên thể loại '" + tenTheLoai + "' đã tồn tại!");
 	                           request.setAttribute("maTheLoai", maTheLoai);
 	                           request.setAttribute("tenTheLoai", tenTheLoai);
+	                           request.setAttribute("viTriKe", viTriKe);
 	                           request.setAttribute("moFormThem", true);
 	                           doGet(request, response);
 	                           return;

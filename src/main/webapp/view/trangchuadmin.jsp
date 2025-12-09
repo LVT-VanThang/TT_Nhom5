@@ -27,7 +27,6 @@
 				<li><a href="${pageContext.request.contextPath}/QuyDinh">⚙️ Cấu Hình Quy Định</a></li>
 				<li><a href="${pageContext.request.contextPath}/TheLoai">📂 Quản Lý Thể loại</a></li>
 				<li><a href="${pageContext.request.contextPath}/NhaXuatBan">🏢 Nhà xuất bản</a></li>
-				<li><a href="${pageContext.request.contextPath}/LoaiDocGia">🧑‍🏫 Loại Độc Giả</a></li>
                 <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
 			</ul>
 		</aside>
@@ -45,10 +44,6 @@
 					🏢<br>Nhà xuất bản<br>
 					<strong>${slNXB}</strong>
 				</div>
-				<div class="stat-box orange">
-					🧑‍🏫<br>Loại độc giả<br>
-					<strong>${slLoaiDocGia}</strong>
-				</div>
 				<div class="stat-box gray">
 					👤<br>Tài khoản thủ thư<br>
 					<strong>${slThuThu}</strong>
@@ -59,7 +54,6 @@
     <h3>⚡ Hành động nhanh</h3>
     <button id="btnQuickTheLoai" class="btn-add">➕ Thêm thể loại</button>
     <button id="btnQuickNXB" class="btn-add">➕ Thêm NXB</button>
-    <button id="btnQuickDocGia" class="btn-add">➕ Thêm loại độc giả</button>
 </div>
 
       <div class="config-box">
@@ -125,31 +119,11 @@
         </form>
     </div>
 </div>
-
-<div id="modalQuickDocGia" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="modalQuickDocGia">&times;</span>
-        <h2>➕ Thêm nhanh Loại Độc Giả</h2>
-        <form action="${pageContext.request.contextPath}/LoaiDocGia" method="post">
-            <input type="hidden" name="action" value="insert">
-            
-            <div class="form-group">
-                <label>Mã Loại Độc Giả (*):</label>
-                <input type="text" name="maLoaiDocGia" required placeholder="VD: LDG001">
-            </div>
-            <div class="form-group">
-                <label>Tên Loại Độc Giả (*):</label>
-                <input type="text" name="tenLoaiDocGia" required placeholder="VD: Sinh viên">
-            </div>
-            <button type="submit" class="btn-save">💾 Lưu lại</button>
-        </form>
-    </div>
-</div>
 <script>
     var contextPath = "${pageContext.request.contextPath}";
 </script>
 
-<script src="${pageContext.request.contextPath}/view/script.js?v=5"></script>
+<script src="${pageContext.request.contextPath}/view/script.js?v=6"></script>
 <c:if test="${not empty baoLoi or not empty moFormThem}">
     <script>
         document.addEventListener("DOMContentLoaded", function() {

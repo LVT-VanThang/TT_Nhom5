@@ -47,9 +47,9 @@ public class DangNhap extends HttpServlet {
 		
 		AdminDAO daoadmin = new AdminDAO();
 		ThuThuDAO daothuthu = new ThuThuDAO();
+		
+		
 		model.QuanTriVien taiKhoanAdmin = daoadmin.kiemTraDangNhap(tenDangNhap, matKhau);
-		
-		
 		if(taiKhoanAdmin != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin_account", taiKhoanAdmin);

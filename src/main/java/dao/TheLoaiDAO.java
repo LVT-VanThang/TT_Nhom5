@@ -8,12 +8,18 @@ import model.TheLoai;
 import util.HibernateUtil;
 
 public class TheLoaiDAO {
-	public List<TheLoai> layDanhSachTheLoai(){
-		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
-	 	   List<TheLoai> dstl=em.createQuery("from TheLoai").getResultList();
-	 	   em.close();
-	 	   return dstl;
-		}
+	public List<model.TheLoai> layDanhSachTheLoai() {
+	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
+	    try {
+
+	        String jpql = "SELECT t FROM TheLoai t ORDER BY t.maTheLoai ASC";
+	        TypedQuery<model.TheLoai> query = em.createQuery(jpql, model.TheLoai.class);
+	        return query.getResultList();
+	        
+	    } finally {
+	        em.close();
+	    }
+	}
 	public TheLoai timKiemTheLoai(String maTheLoai){
 		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
 		   TheLoai tl=em.find(TheLoai.class, maTheLoai);
@@ -39,9 +45,9 @@ public class TheLoaiDAO {
 	public List<TheLoai> timKiemTheoTenTheLoai(String tenTheLoai) {
 		EntityManager em = HibernateUtil.getEMF().createEntityManager();
 	    try {
-	        String jpql = "SELECT t FROM TheLoai t WHERE t.tenTheLoai LIKE :key";
+	        String jpql = "SELECT t FROM TheLoai t WHERE t.tenTheLoai = :key";
 	        TypedQuery<TheLoai> query = em.createQuery(jpql, TheLoai.class);
-	        query.setParameter("key", "%" + tenTheLoai + "%");
+	        query.setParameter("key",  tenTheLoai);
 	        return query.getResultList();
 	    } finally {
 	        em.close();

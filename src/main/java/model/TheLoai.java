@@ -19,6 +19,8 @@ public class TheLoai implements Serializable {
 	private String maTheLoai;
 
 	private String tenTheLoai;
+	
+	private String viTriKe;
 
 	//bi-directional many-to-one association to Sach
 	@OneToMany(mappedBy="theLoai")
@@ -42,7 +44,13 @@ public class TheLoai implements Serializable {
 	public void setTenTheLoai(String tenTheLoai) {
 		this.tenTheLoai = tenTheLoai;
 	}
+	public String getViTriKe() {
+        return viTriKe;
+    }
 
+    public void setViTriKe(String viTriKe) {
+        this.viTriKe = viTriKe;
+    }
 	public List<Sach> getSaches() {
 		return this.saches;
 	}

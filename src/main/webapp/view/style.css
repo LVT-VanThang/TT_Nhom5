@@ -15,14 +15,17 @@
 }
 
 .modal-content {
-	background-color: #fff;
-	margin: 5% auto;
-	width: 700px; /* Rộng hơn để chứa 2 cột */
-	border-radius: 10px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-	overflow: hidden;
-	animation: slideDown 0.4s ease-out;
-	position: relative;
+    background-color: #fff;
+    margin: 20px auto; 
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; 
+    max-height: 90vh; 
+    animation: slideDown 0.4s ease-out;
+    position: relative;
+    display: flex;     
+    flex-direction: column;
 }
 
 .modal-content h2 {
@@ -109,7 +112,7 @@
 	background-color: #218838;
 }
 
-@
+
 keyframes slideDown {
 	from {transform: translateY(-50px);
 	opacity: 0;

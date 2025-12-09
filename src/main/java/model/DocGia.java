@@ -5,11 +5,9 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the doc_gia database table.
- * 
- */
+ * */
 @Entity
 @Table(name="doc_gia")
 @NamedQuery(name="DocGia.findAll", query="SELECT d FROM DocGia d")
@@ -17,28 +15,32 @@ public class DocGia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="MaDocGia")
 	private String maDocGia;
 
+	@Column(name="Email")
 	private String email;
 
+	@Column(name="HoTen")
 	private String hoTen;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name="NgayHetHan")
 	private Date ngayHetHan;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name="NgayLapThe")
 	private Date ngayLapThe;
 
+	@Column(name="SoDienThoai")
 	private String soDienThoai;
 
-	private byte trangThaiThe;
+	@Column(name="TrangThaiThe")
+	private String trangThaiThe;
 
-	//bi-directional many-to-one association to LoaiDocGia
-	@ManyToOne
-	@JoinColumn(name="MaLoaiDocGia")
-	private LoaiDocGia loaiDocGia;
+	
 
-	//bi-directional many-to-one association to PhieuMuon
+	// bi-directional many-to-one association to PhieuMuon
 	@OneToMany(mappedBy="docGia")
 	private List<PhieuMuon> phieuMuons;
 
@@ -93,21 +95,17 @@ public class DocGia implements Serializable {
 		this.soDienThoai = soDienThoai;
 	}
 
-	public byte getTrangThaiThe() {
+	// --- [GETTER/SETTER MỚI CHO STRING] ---
+	public String getTrangThaiThe() {
 		return this.trangThaiThe;
 	}
 
-	public void setTrangThaiThe(byte trangThaiThe) {
+	public void setTrangThaiThe(String trangThaiThe) {
 		this.trangThaiThe = trangThaiThe;
 	}
+	// --------------------------------------
 
-	public LoaiDocGia getLoaiDocGia() {
-		return this.loaiDocGia;
-	}
 
-	public void setLoaiDocGia(LoaiDocGia loaiDocGia) {
-		this.loaiDocGia = loaiDocGia;
-	}
 
 	public List<PhieuMuon> getPhieuMuons() {
 		return this.phieuMuons;

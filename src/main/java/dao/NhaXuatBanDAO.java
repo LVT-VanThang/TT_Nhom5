@@ -9,12 +9,18 @@ import model.NhaXuatBan;
 import util.HibernateUtil;
 
 public class NhaXuatBanDAO {
-	public List<NhaXuatBan> layDanhSachNhaXuatBan(){
-		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
-	 	   List<NhaXuatBan> dsnxb=em.createQuery("from NhaXuatBan").getResultList();
-	 	   em.close();
-	 	   return dsnxb;
-		}
+	public List<model.NhaXuatBan> layDanhSachNhaXuatBan() {
+	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
+	    try {
+
+	        String jpql = "SELECT n FROM NhaXuatBan n ORDER BY n.maNXB ASC";
+	        TypedQuery<model.NhaXuatBan> query = em.createQuery(jpql, model.NhaXuatBan.class);
+	        return query.getResultList();
+	        
+	    } finally {	
+	        em.close();
+	    }
+	}
 	public NhaXuatBan timKiemNhaXuatBan(String maNhaXuatBan){
 		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
 		   NhaXuatBan nxb=em.find(NhaXuatBan.class, maNhaXuatBan);

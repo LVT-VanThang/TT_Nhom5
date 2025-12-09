@@ -2,6 +2,7 @@ package dao;
 
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import model.ThuThu;
@@ -29,11 +30,17 @@ public class ThuThuDAO {
             }
         }
     }
-	public List<ThuThu> layDanhSachThuThu(){
-	   EntityManager em=HibernateUtil.getEMF().createEntityManager();
- 	   List<ThuThu> dstt=em.createQuery("from ThuThu").getResultList();
- 	   em.close();
- 	   return dstt;
+	public List<model.ThuThu> layDanhSachThuThu() {
+	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
+	    try {
+
+	        String jpql = "SELECT t FROM ThuThu t ORDER BY t.maThuThu ASC";
+	        TypedQuery<model.ThuThu> query = em.createQuery(jpql, model.ThuThu.class);
+	        return query.getResultList();
+	        
+	    } finally {
+	        em.close();
+	    }
 	}
 	public ThuThu timKiemThuThu(String maThuThu){
  	   EntityManager em=HibernateUtil.getEMF().createEntityManager();
@@ -104,7 +111,8 @@ public class ThuThuDAO {
 	 		   }
 	 	   } catch (Exception e) {
 	 		   e.printStackTrace();
-	 		   if(em.getTransaction().isActive()) em.getTransaction().rollback();
+	 		   if(em.getTransaction().isActive())
+	 			   em.getTransaction().rollback();
 	 		   return false;
 	 	   } finally {
 	 		   em.close(); 

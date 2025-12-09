@@ -26,7 +26,6 @@
 				<li><a href="${pageContext.request.contextPath}/QuyDinh"class="active">⚙️ Cấu Hình Quy Định</a></li>
 				<li><a href="${pageContext.request.contextPath}/TheLoai">📂 Quản Lý Thể loại</a></li>
 				<li><a href="${pageContext.request.contextPath}/NhaXuatBan">🏢 Nhà xuất bản</a></li>
-				<li><a href="${pageContext.request.contextPath}/LoaiDocGia">🧑‍🏫 Loại Độc Giả</a></li>
                 <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
 			</ul>
 		</aside>
@@ -47,7 +46,7 @@
 							tìm</a>
 					</c:if>
 				</form>
-				<button id="btnThemMoi" class="btn-add">➕ Thêm mới</button>
+				<button id="btnThem" class="btn-add">➕ Thêm mới</button>
 			</div>
 
 			<table class="data-table">
@@ -56,6 +55,7 @@
 						<th>STT</th>
 						<th>Mã Thể loại</th>
 						<th>Tên thể loại</th>
+						<th>Vị trí kệ</th>
 						<th>Hành động</th>
 					</tr>
 				</thead>
@@ -66,6 +66,7 @@
 								<td>${status.count}</td>
 								<td>${tl.maTheLoai}</td>
 								<td>${tl.tenTheLoai}</td>
+								<td>${tl.viTriKe}</td>
 								<td><a href="TheLoai?action=edit&id=${tl.maTheLoai}"
 									class="btn-edit">Sửa</a> <a href="#" class="btn-delete"
 									onclick="xacNhanXoa('${tl.maTheLoai}', '${tl.tenTheLoai}', 'TheLoai')">
@@ -84,7 +85,7 @@
 			</table>
 		</main>
 	</div>
-	<div id="modalThemTheLoai" class="modal">
+	<div id="modalThem" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 
@@ -113,14 +114,16 @@
 				</div>
 
 				<div class="form-group">
-					<label>Tên Quy định (*):</label> <input type="text"
+					<label>Tên Thể Loại (*):</label> <input type="text"
 						name="tenTheLoai"
 						value="${not empty suaTheLoai ? suaTheLoai.tenTheLoai : param.tenTheLoai}"
 						required placeholder="Nhập tên thể loại">
 				</div>
-
-
-
+				<div class="form-group">
+					<label>Vị trí Kệ sách:</label> <input type="text" name="viTriKe"
+						value="${not empty suaTheLoai ? suaTheLoai.viTriKe : param.viTriKe}"
+						placeholder="Nhập vị trí (VD: Kệ số 1)">
+				</div>
 				<button type="submit" class="btn-save" style="margin-top: 20px;">
 					<c:choose>
 						<c:when test="${not empty suaTheLoai}">💾 Cập nhật</c:when>
