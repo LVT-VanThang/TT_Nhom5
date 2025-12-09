@@ -60,7 +60,7 @@
 
 				<button class="btn-add" id="btnThem">➕ Thêm mới</button>
 			</div>
-
+            <div class="table-container">
 			<table class="data-table">
 				<thead>
 					<tr>
@@ -108,6 +108,7 @@
 					</c:if>
 				</tbody>
 			</table>
+			</div>
 		</main>
 	</div>
 

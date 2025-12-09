@@ -145,7 +145,7 @@ body {
 }
 
 .sidebar {
-	width: 250px;
+	width: 200px;
 	background-color: #37474f;
 	color: white;
 	padding: 20px;
@@ -233,39 +233,59 @@ body {
 }
 
 /* =========================================
-   4. BẢNG DỮ LIỆU (CŨ - GIỮ NGUYÊN)
+   4. BẢNG DỮ LIỆU (ĐÃ SỬA ĐỂ CUỘN)
    ========================================= */
+
+/* 1. Tạo một lớp bao bọc bên ngoài bảng để xử lý thanh cuộn */
+.table-container {
+    max-height: 70vh; /* Chiều cao tối đa bằng 70% màn hình, quá thì hiện thanh cuộn */
+    overflow-y: auto; /* Hiện thanh cuộn dọc khi danh sách dài */
+    overflow-x: auto; /* Hiện thanh cuộn ngang nếu bảng quá rộng */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng cho đẹp */
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+/* 2. Style cho bảng (Bỏ box-shadow cũ đi vì đã chuyển sang container) */
 .data-table {
-	width: 100%;
-	border-collapse: collapse;
-	background-color: #fff;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    /* border-radius: 8px; -> Bỏ cái này vì container đã bo góc */
+    /* overflow: hidden; -> Bỏ cái này để sticky header hoạt động */
 }
 
 .data-table th, .data-table td {
-	padding: 12px 16px;
-	border-bottom: 1px solid #eee;
-	text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
 }
 
+/* 3. CỐ ĐỊNH TIÊU ĐỀ BẢNG (Sticky Header) - QUAN TRỌNG */
 .data-table th {
-	background-color: #f5f5f5;
-	color: #333;
+    background-color: #f5f5f5; /* Màu nền tiêu đề */
+    color: #333;
+    
+    position: sticky; /* Ghim vị trí */
+    top: 0;           /* Ghim ở đỉnh của .table-container */
+    z-index: 2;       /* Luôn nằm đè lên nội dung khi cuộn */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ ngăn cách tiêu đề */
 }
 
+/* ... Các class button giữ nguyên ... */
 .btn-edit, .btn-delete {
-	padding: 6px 12px;
-	margin-right: 6px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-weight: 500;
-	text-decoration: none;
-	font-size: 14px;
-	display: inline-block;
+    padding: 6px 12px;
+    margin-right: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
 }
+/* ... (Giữ nguyên phần màu sắc button bên dưới) ... */
 
 .btn-edit {
 	background-color: #ffb300;

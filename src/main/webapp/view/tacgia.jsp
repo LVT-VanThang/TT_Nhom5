@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Quản lý Tác giả</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=2" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=3" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -37,7 +37,7 @@
         
         <button class="btn-add" id="btnThem">➕ Thêm mới</button>
       </div>
-
+      <div class="table-container">
       <table class="data-table">
         <thead>
           <tr>
@@ -68,6 +68,7 @@
           </c:if>
         </tbody>
       </table>
+      </div>
     </main>
   </div>
 

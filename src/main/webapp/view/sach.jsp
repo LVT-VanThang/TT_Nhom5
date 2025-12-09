@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Quản lý Sách</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=2" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=10" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -18,7 +18,7 @@
         <li><a href="${pageContext.request.contextPath}/Sach">📚Quản Lý Sách</a></li>
         <li><a href="${pageContext.request.contextPath}/TacGia">✍️Quản Lý Tác giả</a></li>
         <li><a href="${pageContext.request.contextPath}/DocGia" class="active">🧑‍💼Quản Lý Độc giả</a></li>
-        <li><a href="${pageContext.request.contextPath}/MuonTra">🔄Quản Lý Mượn/Trả</a></li>
+        <li><a href="${pageContext.request.contextPath}/MuonTra">🔄Quản Lý Mượn/ Trả</a></li>
         <li><a href="${pageContext.request.contextPath}/TraCuu">🔍 Tra cứu</a></li>
         <li><a href="${pageContext.request.contextPath}/ThongKe">📊 Thống kê</a></li>
         <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
@@ -37,7 +37,7 @@
         
         <button class="btn-add" id="btnThem">➕ Thêm mới</button>
       </div>
-
+      <div class="table-container">
       <table class="data-table">
         <thead>
           <tr>
@@ -78,6 +78,7 @@
           </c:if>
         </tbody>
       </table>
+      </div>
     </main>
   </div>
 

@@ -13,7 +13,7 @@
 <meta charset="UTF-8" />
 <title>Quản lý Thể loại</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/view/style.css?v=1" />
+	href="${pageContext.request.contextPath}/view/style.css?v=10" />
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -48,7 +48,7 @@
 				</form>
 				<button id="btnThem" class="btn-add">➕ Thêm mới</button>
 			</div>
-
+            <div class="table-container">
 			<table class="data-table">
 				<thead>
 					<tr>
@@ -83,6 +83,7 @@
 					</c:if>
 				</tbody>
 			</table>
+			</div>
 		</main>
 	</div>
 	<div id="modalThem" class="modal">

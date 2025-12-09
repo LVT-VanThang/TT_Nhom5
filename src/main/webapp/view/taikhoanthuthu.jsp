@@ -50,7 +50,7 @@
 				</form>
 				<button id="btnThem" class="btn-add">➕ Thêm mới</button>
 			</div>
-
+            <div class="table-container">
 			<table class="data-table">
 				<thead>
 					<tr>
@@ -93,6 +93,7 @@
 					</c:if>
 				</tbody>
 			</table>
+			</div>
 		</main>
 	</div>
 	<div id="modalThem" class="modal">
