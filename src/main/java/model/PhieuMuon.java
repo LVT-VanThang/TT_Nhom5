@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,8 @@ public class PhieuMuon implements Serializable {
 	private Date ngayMuon;
 
 	private byte trangThaiPhieu;
+	
+	private BigDecimal tongTienPhat;
 
 	//bi-directional many-to-one association to ChiTietPhieuMuon
 	@OneToMany(mappedBy="phieuMuon")
@@ -83,6 +87,13 @@ public class PhieuMuon implements Serializable {
 	public void setChiTietPhieuMuons(List<ChiTietPhieuMuon> chiTietPhieuMuons) {
 		this.chiTietPhieuMuons = chiTietPhieuMuons;
 	}
+	public BigDecimal getTongTienPhat() {
+        return this.tongTienPhat;
+    }
+
+    public void setTongTienPhat(BigDecimal tongTienPhat) {
+        this.tongTienPhat = tongTienPhat;
+    }
 
 	public ChiTietPhieuMuon addChiTietPhieuMuon(ChiTietPhieuMuon chiTietPhieuMuon) {
 		getChiTietPhieuMuons().add(chiTietPhieuMuon);
@@ -113,5 +124,16 @@ public class PhieuMuon implements Serializable {
 	public void setThuThu(ThuThu thuThu) {
 		this.thuThu = thuThu;
 	}
-
+	public long getSoNgayTreHan() {
+        if (this.ngayHenTra == null) return 0;
+        
+        long homNay = System.currentTimeMillis();
+        long henTra = this.ngayHenTra.getTime();
+        
+        long diff = homNay - henTra;
+        
+        if (diff <= 0) return 0;
+        
+        return diff / (24 * 60 * 60 * 1000);
+    }
 }
