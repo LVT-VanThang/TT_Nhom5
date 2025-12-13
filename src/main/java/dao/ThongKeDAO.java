@@ -15,18 +15,21 @@ public class ThongKeDAO {
             return em.createQuery("SELECT COUNT(s) FROM Sach s", Long.class).getSingleResult();
         } finally { em.close(); }
     }
+    
     public long demTongDocGia() {
         EntityManager em = HibernateUtil.getEMF().createEntityManager();
         try {
             return em.createQuery("SELECT COUNT(d) FROM DocGia d", Long.class).getSingleResult();
         } finally { em.close(); }
     }
+    
     public long demPhieuDangMuon() {
         EntityManager em = HibernateUtil.getEMF().createEntityManager();
         try {
             return em.createQuery("SELECT COUNT(p) FROM PhieuMuon p WHERE p.trangThaiPhieu = 0", Long.class).getSingleResult();
         } finally { em.close(); }
     }
+    
     public BigDecimal tinhTongTienPhat() {
         EntityManager em = HibernateUtil.getEMF().createEntityManager();
         try {
@@ -62,6 +65,19 @@ public class ThongKeDAO {
                           "WHERE p.trangThaiPhieu = 0 AND p.ngayHenTra < CURRENT_DATE";
             
             return em.createQuery(jpql, DocGia.class).getResultList();
+        } finally { 
+            em.close(); 
+        }
+    }
+    public List<model.PhieuMuon> layDanhSachPhieuTreHan() {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            String jpql = "SELECT p FROM PhieuMuon p " +
+                          "WHERE p.trangThaiPhieu = 0 AND p.ngayHenTra < CURRENT_DATE " +
+                          "ORDER BY p.ngayHenTra ASC";
+            
+            return em.createQuery(jpql, model.PhieuMuon.class)
+                     .getResultList();
         } finally { 
             em.close(); 
         }

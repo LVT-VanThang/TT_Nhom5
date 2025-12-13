@@ -34,7 +34,7 @@ public class ThuThuDAO {
 	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
 	    try {
 
-	        String jpql = "SELECT t FROM ThuThu t ORDER BY t.maThuThu ASC";
+	        String jpql = "SELECT t FROM ThuThu t ORDER BY t.maThuThu DESC";
 	        TypedQuery<model.ThuThu> query = em.createQuery(jpql, model.ThuThu.class);
 	        return query.getResultList();
 	        

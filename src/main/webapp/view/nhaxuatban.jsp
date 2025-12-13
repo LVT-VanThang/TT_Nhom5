@@ -52,7 +52,7 @@
 			<table class="data-table">
 				<thead>
 					<tr>
-						<th>STT</th>
+
 						<th>Mã nhà xuất bản</th>
 						<th>Tên nhà xuất bản</th>
 						<th>Hành động</th>
@@ -62,7 +62,7 @@
 					<c:if test="${not empty dsnxb}">
 						<c:forEach var="nxb" items="${dsnxb}" varStatus="status">
 							<tr>
-								<td>${status.count}</td>
+
 								<td>${nxb.maNXB}</td>
 								<td>${nxb.tenNXB}</td>
 								<td><a href="NhaXuatBan?action=edit&id=${nxb.maNXB}"

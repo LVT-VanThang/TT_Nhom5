@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import model.ChiTietPhieuMuon;
 import model.ChiTietPhieuMuonPK;
+import model.DocGia;
 import model.PhieuMuon;
 import model.Sach;
 import util.HibernateUtil;
@@ -209,6 +210,33 @@ public class PhieuMuonDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            em.close();
+        }
+    }
+    public boolean kiemTraDocGiaBiKhoa(String maDocGia) {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            DocGia dg = em.find(DocGia.class, maDocGia);
+            if (dg != null) {
+                Integer tt = dg.getTrangThaiThe(); 
+                return tt == null || tt == 0;
+            }
+            return false;
+        } finally {
+            em.close();
+        }
+    }
+    public boolean kiemTraTheHetHan(String maDocGia) {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            DocGia dg = em.find(DocGia.class, maDocGia);
+            if (dg != null && dg.getNgayHetHan() != null) {
+                java.util.Date ngayHetHan = dg.getNgayHetHan();
+                java.util.Date homNay = new java.util.Date();
+                return ngayHetHan.before(homNay);
+            }
+            return false; 
         } finally {
             em.close();
         }

@@ -54,7 +54,7 @@
 			<table class="data-table">
 				<thead>
 					<tr>
-						<th>STT</th>
+
 						<th>Mã Thủ thư</th>
 						<th>Họ tên</th>
 						<th>Email</th>
@@ -67,7 +67,7 @@
 					<c:if test="${not empty dstt}">
 						<c:forEach var="tt" items="${dstt}" varStatus="status">
 							<tr>
-								<td>${status.count}</td>
+
 								<td>${tt.maThuThu}</td>
 								<td>${tt.hoTen}</td>
 								<td>${tt.email}</td>

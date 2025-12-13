@@ -13,7 +13,7 @@ public class NhaXuatBanDAO {
 	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
 	    try {
 
-	        String jpql = "SELECT n FROM NhaXuatBan n ORDER BY n.maNXB ASC";
+	        String jpql = "SELECT n FROM NhaXuatBan n ORDER BY n.maNXB DESC";
 	        TypedQuery<model.NhaXuatBan> query = em.createQuery(jpql, model.NhaXuatBan.class);
 	        return query.getResultList();
 	        

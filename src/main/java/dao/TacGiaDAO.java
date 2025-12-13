@@ -10,12 +10,16 @@ import model.TacGia;
 import util.HibernateUtil;
 
 public class TacGiaDAO {
-	public List<TacGia> layDanhTacGiaTacGia(){
-		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
-	 	   List<TacGia> dstg=em.createQuery("from TacGia").getResultList();
-	 	   em.close();
-	 	   return dstg;
-		}
+	public List<TacGia> layDanhSachTacGia(){
+		EntityManager em = HibernateUtil.getEMF().createEntityManager();
+		try {
+	        String jpql = "SELECT t FROM TacGia t ORDER BY t.maTacGia DESC";
+	        TypedQuery<model.TacGia> query = em.createQuery(jpql, model.TacGia.class);
+	        return query.getResultList();    
+	    } finally {
+	        em.close();
+	    }
+	}
 	public TacGia timKiemTacGia(String maTacGia){
 		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
 		   TacGia tg=em.find(TacGia.class, maTacGia);

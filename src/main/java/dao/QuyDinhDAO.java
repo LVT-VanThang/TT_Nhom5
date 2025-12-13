@@ -82,4 +82,20 @@ public class QuyDinhDAO {
 	        em.close();
 	    }
 	}
+    public int layGiaTriQuyDinh(String maqd) {
+        EntityManager em = HibernateUtil.getEMF().createEntityManager();
+        try {
+            QuyDinh qd = em.find(QuyDinh.class, maqd);
+            if (qd != null && qd.getGiaTri() != null) {
+                try {
+                    return Integer.parseInt(qd.getGiaTri());
+                } catch (NumberFormatException e) {
+                    return 0; 
+                }
+            }
+            return 0; 
+        } finally {
+            em.close();
+        }
+    }
 }   

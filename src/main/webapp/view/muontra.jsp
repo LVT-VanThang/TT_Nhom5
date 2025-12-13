@@ -8,7 +8,7 @@
   <meta charset="UTF-8" />
   <title>Quản Lý Mượn Trả</title>
   
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=14" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css?v=15" />
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -16,18 +16,18 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
       <h2>📘 Thủ thư</h2>
       <ul>
-        <li><a href="${pageContext.request.contextPath}/TrangChu">🏠 Trang chủ</a></li>
+        <li><a href="${pageContext.request.contextPath}/TrangChuThuThu">🏠 Trang chủ</a></li>
         <li><a href="${pageContext.request.contextPath}/Sach">📚Quản Lý Sách</a></li>
         <li><a href="${pageContext.request.contextPath}/TacGia">✍️Quản Lý Tác giả</a></li>
         <li><a href="${pageContext.request.contextPath}/DocGia">🧑‍💼Quản Lý Độc giả</a></li>
         <li><a href="${pageContext.request.contextPath}/MuonTra" class="active">🔄Quản Lý Mượn/Trả</a></li>
-        <li><a href="${pageContext.request.contextPath}/TraCuu">🔍 Tra cứu</a></li>
         <li><a href="${pageContext.request.contextPath}/ThongKe">📊 Thống kê</a></li>
         <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
       </ul>
@@ -85,10 +85,25 @@
                             <span style="color: #ccc;">0 VNĐ</span>
                         </c:if>
                     </td>
-                    <td>
-                        <c:if test="${pm.trangThaiPhieu == 0}"><span class="status-tag status-borrowing">Đang mượn</span></c:if>
-                        <c:if test="${pm.trangThaiPhieu == 1}"><span class="status-tag status-returned">Đã trả</span></c:if>
-                    </td>
+                    <jsp:useBean id="now" class="java.util.Date" />
+
+<td>
+    <c:choose>
+        <c:when test="${pm.trangThaiPhieu == 1}">
+            <span class="status-tag status-returned">Đã trả</span>
+        </c:when>
+        <c:when test="${pm.trangThaiPhieu == 0}">
+            <c:choose>
+                <c:when test="${pm.ngayHenTra < now}">
+                    <span class="status-tag status-overdue">Quá hạn</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="status-tag status-borrowing">Đang mượn</span>
+                </c:otherwise>
+            </c:choose>
+        </c:when>
+    </c:choose>
+</td>
                     <td>
                         <a href="${pageContext.request.contextPath}/MuonTra?action=detail&maPhieu=${pm.maPhieuMuon}"
                         class="btn-edit"
@@ -218,8 +233,8 @@
                                   <button type="button" 
                                      onclick="xacNhanTraSach('${pmChiTiet.maPhieuMuon}', '${ct.sach.maSach}', '${ct.sach.tenSach}')"
                                      class="btn-add" 
-                                     style="background-color: #28a745; padding: 5px 10px; font-size: 12px; width: auto; border:none;">
-                                     ↩️ Trả sách
+                                     style="background-color: #28a745; font-size: 14px; width: auto; border:none;">
+                                     Trả sách
                                   </button>
                               </c:if>
                           </td>

@@ -10,11 +10,17 @@ import model.Sach;
 import util.HibernateUtil;
 
 public class SachDAO {
-	public List<Sach> layDanhSachSach(){
+	public List<model.Sach> layDanhSachSach(){
 		   EntityManager em=HibernateUtil.getEMF().createEntityManager();
-	 	   List<Sach> dss=em.createQuery("from Sach").getResultList();
-	 	   em.close();
-	 	   return dss;
+		   try {
+
+		        String jpql = "SELECT s FROM Sach s ORDER BY s.maSach DESC";
+		        TypedQuery<model.Sach> query = em.createQuery(jpql, model.Sach.class);
+		        return query.getResultList();
+		        
+		    } finally {
+		        em.close();
+		    }
 		}
 	
 	public Sach timKiemSach(String maSach){

@@ -46,8 +46,8 @@ public class TrangChuQuanTriVien extends HttpServlet {
 		int slNXB = nxbdao.layDanhSachNhaXuatBan().size();
 		int slThuThu = ttdao.layDanhSachThuThu().size(); 
 		dao.QuyDinhDAO qdDao = new dao.QuyDinhDAO();
-	    model.QuyDinh qdNgay = qdDao.timKiemQuyDinh("QD001"); 
-	    model.QuyDinh qdPhat = qdDao.timKiemQuyDinh("QD002");
+	    model.QuyDinh qdNgay = qdDao.timKiemQuyDinh("QD002"); 
+	    model.QuyDinh qdPhat = qdDao.timKiemQuyDinh("QD001");
 	    
 	    request.setAttribute("qdNgay", qdNgay);
 	    request.setAttribute("qdPhat", qdPhat);
@@ -71,7 +71,7 @@ public class TrangChuQuanTriVien extends HttpServlet {
 	            String giaTriPhat = request.getParameter("giaTriPhat");
 	            
 	            dao.QuyDinhDAO qdDao = new dao.QuyDinhDAO();
-	            model.QuyDinh qdNgay = qdDao.timKiemQuyDinh("QD001");
+	            model.QuyDinh qdNgay = qdDao.timKiemQuyDinh("QD002");
 	            if (qdNgay != null) {
 	                qdNgay.setGiaTri(giaTriNgay);
 	                qdNgay.setNgayCapNhat(new java.util.Date());
@@ -81,7 +81,7 @@ public class TrangChuQuanTriVien extends HttpServlet {
 	                
 	                qdDao.capNhatQuyDinh(qdNgay);
 	            }
-	            model.QuyDinh qdPhat = qdDao.timKiemQuyDinh("QD002");
+	            model.QuyDinh qdPhat = qdDao.timKiemQuyDinh("QD001");
 	            if (qdPhat != null) {
 	                qdPhat.setGiaTri(giaTriPhat);
 	                qdPhat.setNgayCapNhat(new java.util.Date());

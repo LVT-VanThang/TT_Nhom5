@@ -76,9 +76,9 @@
 										pattern="dd/MM/yyyy HH:mm" /></td>
 								<td>${qd.quanTriVien.maAdmin}</td>
 								<td><a href="QuyDinh?action=edit&id=${qd.maQuyDinh}"
-									class="btn-edit">Sửa</a> <a href="#" class="btn-delete"
-									onclick="xacNhanXoa('${qd.maQuyDinh}', '${qd.tenQuyDinh}', 'QuyDinh')">
-										Xóa </a></td>
+									 class="btn-edit">Sửa
+									</a> 
+								</td>
 							</tr>
 						</c:forEach>
 					</c:if>
@@ -127,6 +127,7 @@
 					<label>Tên Quy định (*):</label> <input type="text"
 						name="tenQuyDinh"
 						value="${not empty suaQuyDinh ? suaQuyDinh.tenQuyDinh : param.tenQuyDinh}"
+						${not empty suaQuyDinh ? 'readonly style="background-color:#e9ecef"' : ''}
 						required placeholder="Nhập tên quy định">
 				</div>
 

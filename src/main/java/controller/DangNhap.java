@@ -26,7 +26,7 @@ public class DangNhap extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -61,7 +61,7 @@ public class DangNhap extends HttpServlet {
 				if (taiKhoanThuThu.getTrangThai() == 1) {
 		        HttpSession session = request.getSession();
 		        session.setAttribute("thuthu_account", taiKhoanThuThu);
-		        response.sendRedirect(request.getContextPath() + "/view/trangchuthuthu.jsp"); 
+		        response.sendRedirect(request.getContextPath() + "/TrangChuThuThu"); 
 				}else {
 					request.setAttribute("baoLoi", "Tài khoản của bạn đã bị KHÓA! Vui lòng liên hệ Admin.");
                     request.getRequestDispatcher("/view/dangnhap.jsp").forward(request, response);

@@ -59,7 +59,7 @@ public class TacGia extends HttpServlet {
 			String tuKhoaChuan = tuKhoa.trim();
 			dstg = tgdao.timKiemTheoTenTacGia(tuKhoaChuan);
 		} else {
-			dstg = tgdao.layDanhTacGiaTacGia();
+			dstg = tgdao.layDanhSachTacGia();
 		}
 		request.setAttribute("dstg", dstg);
 		request.getRequestDispatcher("/view/tacgia.jsp").forward(request, response);

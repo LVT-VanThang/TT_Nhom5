@@ -36,7 +36,7 @@ public class DocGia implements Serializable {
 	private String soDienThoai;
 
 	@Column(name="TrangThaiThe")
-	private String trangThaiThe;
+	private int trangThaiThe;
 
 	
 
@@ -95,18 +95,12 @@ public class DocGia implements Serializable {
 		this.soDienThoai = soDienThoai;
 	}
 
-	// --- [GETTER/SETTER MỚI CHO STRING] ---
-	public String getTrangThaiThe() {
-		return this.trangThaiThe;
-	}
-
-	public void setTrangThaiThe(String trangThaiThe) {
-		this.trangThaiThe = trangThaiThe;
-	}
-	// --------------------------------------
-
-
-
+	public int getTrangThaiThe() {
+        return trangThaiThe;
+    }
+    public void setTrangThaiThe(int trangThaiThe) {
+        this.trangThaiThe = trangThaiThe;
+    }
 	public List<PhieuMuon> getPhieuMuons() {
 		return this.phieuMuons;
 	}

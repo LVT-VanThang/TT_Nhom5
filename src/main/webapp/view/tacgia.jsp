@@ -14,12 +14,11 @@
     <aside class="sidebar">
       <h2>📘 Thủ thư</h2>
       <ul>
-        <li><a href="#">🏠 Trang chủ</a></li>
+        <li><a href="${pageContext.request.contextPath}/TrangChuThuThu">🏠 Trang chủ</a></li>
         <li><a href="${pageContext.request.contextPath}/Sach">📚Quản Lý Sách</a></li>
         <li><a href="${pageContext.request.contextPath}/TacGia">✍️Quản Lý Tác giả</a></li>
         <li><a href="${pageContext.request.contextPath}/DocGia" class="active">🧑‍💼Quản Lý Độc giả</a></li>
         <li><a href="${pageContext.request.contextPath}/MuonTra">🔄Quản Lý Mượn/Trả</a></li>
-        <li><a href="${pageContext.request.contextPath}/TraCuu">🔍 Tra cứu</a></li>
         <li><a href="${pageContext.request.contextPath}/ThongKe">📊 Thống kê</a></li>
         <li><a href="${pageContext.request.contextPath}/DangXuat">🚪 Đăng xuất</a></li>
       </ul>
@@ -33,6 +32,12 @@
             <input type="hidden" name="action" value="search">
             <input type="text" name="keyword" placeholder="Tìm kiếm tác giả..." value="${param.keyword}"/>
             <button type="submit" class="btn-search">🔍 Tìm kiếm</button>
+            <c:if test="${not empty param.keyword}">
+						<a href="${pageContext.request.contextPath}/Sach"
+							class="btn-delete"
+							style="text-decoration: none; display: flex; align-items: center; margin-left: 5px;">Hủy
+							tìm</a>
+					</c:if>
         </form>
         
         <button class="btn-add" id="btnThem">➕ Thêm mới</button>
@@ -41,7 +46,6 @@
       <table class="data-table">
         <thead>
           <tr>
-            <th>STT</th>
             <th>Mã tác giả</th>
             <th>Tên tác giả</th>
             <th>Ghi chú</th>
@@ -52,7 +56,6 @@
           <c:if test="${not empty dstg}">
             <c:forEach var="tg" items="${dstg}" varStatus="status">
               <tr>
-                <td>${status.count}</td>
                 <td>${tg.maTacGia}</td>
                 <td>${tg.tenTacGia}</td>
                 <td>${tg.ghiChu}</td>

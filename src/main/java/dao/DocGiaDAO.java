@@ -13,7 +13,7 @@ public class DocGiaDAO {
 	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
 	    try {
 
-	        String jpql = "SELECT d FROM DocGia d ORDER BY d.maDocGia ASC";
+	        String jpql = "SELECT d FROM DocGia d ORDER BY d.maDocGia DESC";
 	        TypedQuery<model.DocGia> query = em.createQuery(jpql, model.DocGia.class);
 	        return query.getResultList();
 	        

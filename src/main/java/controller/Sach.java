@@ -43,7 +43,7 @@ public class Sach extends HttpServlet {
 		TheLoaiDAO tldao = new TheLoaiDAO();
 		NhaXuatBanDAO nxbdao = new NhaXuatBanDAO();
 		
-		List<TacGia> dstg = tgdao.layDanhTacGiaTacGia();
+		List<TacGia> dstg = tgdao.layDanhSachTacGia();
 		List<TheLoai> dstl = tldao.layDanhSachTheLoai();
 		List<NhaXuatBan> dsnxb = nxbdao.layDanhSachNhaXuatBan();
 		

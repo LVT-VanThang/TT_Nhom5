@@ -52,7 +52,7 @@
 			<table class="data-table">
 				<thead>
 					<tr>
-						<th>STT</th>
+
 						<th>Mã Thể loại</th>
 						<th>Tên thể loại</th>
 						<th>Vị trí kệ</th>
@@ -63,7 +63,7 @@
 					<c:if test="${not empty dstl}">
 						<c:forEach var="tl" items="${dstl}" varStatus="status">
 							<tr>
-								<td>${status.count}</td>
+
 								<td>${tl.maTheLoai}</td>
 								<td>${tl.tenTheLoai}</td>
 								<td>${tl.viTriKe}</td>

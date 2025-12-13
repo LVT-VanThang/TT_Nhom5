@@ -12,7 +12,7 @@ public class TheLoaiDAO {
 	    EntityManager em = HibernateUtil.getEMF().createEntityManager();
 	    try {
 
-	        String jpql = "SELECT t FROM TheLoai t ORDER BY t.maTheLoai ASC";
+	        String jpql = "SELECT t FROM TheLoai t ORDER BY t.maTheLoai DESC";
 	        TypedQuery<model.TheLoai> query = em.createQuery(jpql, model.TheLoai.class);
 	        return query.getResultList();
 	        

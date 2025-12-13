@@ -133,8 +133,15 @@ public class MuonTra extends HttpServlet {
                 String maDocGia = request.getParameter("maDocGia");
                 String[] maSachArr = request.getParameterValues("maSach");
 
-                if (maDocGia == null || maDocGia.isEmpty())
+                if (maDocGia == null || maDocGia.isEmpty()){
                     throw new Exception("Vui lòng chọn Độc giả!");
+                }
+                if (pmDAO.kiemTraDocGiaBiKhoa(maDocGia)) {
+                    throw new Exception("Thẻ độc giả này đang bị KHÓA! Không thể mượn sách.");
+                }
+                if (pmDAO.kiemTraTheHetHan(maDocGia)) {
+                    throw new Exception("Thẻ độc giả này đã HẾT HẠN sử dụng! Vui lòng gia hạn trước khi mượn.");
+                }
                 if (pmDAO.kiemTraDocGiaDangMuon(maDocGia)) {
                     throw new Exception("Độc giả này đang có phiếu mượn chưa trả xong!");
                 }
